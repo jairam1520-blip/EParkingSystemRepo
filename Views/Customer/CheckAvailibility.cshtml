@@ -1,0 +1,100 @@
+﻿@model ParkingSystem.Models.Slot
+
+@using ParkingSystem.Models
+
+<form asp-action="CheckAvailibility" method="post">
+
+    <style>
+
+        /* HIDE RADIO */
+        [type=radio] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+            /* IMAGE STYLES */
+            [type=radio] + img {
+                cursor: pointer;
+            }
+
+            /* CHECKED STYLES */
+            [type=radio]:checked + img {
+                outline: 2px solid #f00;
+            }
+    </style>
+    <table>
+        @foreach (Slot slot in (IEnumerable<Slot>)ViewBag.SlotPresent)
+        {
+            var flag = false;
+
+            foreach (var id in (List<int>)ViewBag.overlappedSlotId)
+            {
+
+                if (id == slot.Sid)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            //Not overlapped slot(available for booking)
+            if (!flag)
+            {
+                <tr>
+                    <td>
+
+
+
+
+                        @if (@ViewBag.VehicleType == "Two Wheeler")
+                        {
+                            <label>
+                                <input asp-for="Sid" type="radio" value=@slot.Sid>
+                                <img height="100" width="100" src="~/lib/images/greenbike.jpg">
+                            </label>
+
+                        }
+                        else
+                        {
+                            <label>
+
+
+                                <input asp-for="Sid" type="radio" value=@slot.Sid>
+                                <img height="100" width="100" src="~/lib/images/greencar.png">
+                            </label>
+                        }
+
+
+
+                    </td>
+                </tr>
+            }//overlapped slot(not available for booking)
+            else
+            {
+                <tr>
+                    <td>
+
+
+                        <label>
+                            <input asp-for="Sid" value=@slot.Sid type="radio" disabled>
+                        </label>
+
+                        @if (@ViewBag.VehicleType == "Two Wheeler")
+                        {
+                            <img height="100" width="100" src="~/lib/images/redbike.jpg">
+                        }
+                        else
+                        {
+                            <img height="100" width="100" src="~/lib/images/redcar.jpg">
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+    <input type="submit" value="confirm slot" class="btn btn-primary" />
+</form>

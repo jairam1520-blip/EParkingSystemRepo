@@ -1,0 +1,58 @@
+﻿@model ParkingSystem.Models.LoginViewModel
+
+<div class="row offset-3">
+    <h2>Sign In</h2>
+    <div class="col-md-8">
+    <section id="loginForm">
+        <form id="account" method="post" asp-action="Login" asp-controller="Account">
+            <h4>Use your registered email id and pasword to login.</h4>
+            <hr />
+           
+            <div class="form-group row">
+                <label class="col-md-2" asp-for="Email"></label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+            </div>
+            <br />
+            <div class="form-group row">
+                <label class="col-md-2" asp-for="Password"></label>
+                <div class="col-md-10">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+            </div>
+            <br />
+             <div class="form-group row">
+                <div class="col-md-10 offset-md-2 checkbox">
+                    <label asp-for="RememberMe" class="pr-4 pl-0">
+                        <input asp-for="RememberMe">
+                    </label>
+                    &nbsp; Remember me?
+                </div>
+            </div>
+            <br />
+             <div class="form-group row">
+                <div class="col-md-10 offset-md-2 checkbox">
+                    <input type="submit" value="Log in" class="btn btn-success"/>
+                </div>
+            </div>
+            <br/>
+            <p class="col-md-10 offset-md-2">
+                <a style="text-decoration:none;" asp-action="Register">Sign Up</a>
+            </p>
+           
+
+        </form>
+    </section>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

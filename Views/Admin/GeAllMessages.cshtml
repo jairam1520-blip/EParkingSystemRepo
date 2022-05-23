@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ParkingSystem.Models.ContactUsModel>
+
+
+<div class="row pt-4">
+    <div class="col-6">
+        <h2 class="text-heading">All Messages</h2>
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>Changes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+              
+                <a class="btn btn-danger" asp-action="DeleteMessagePost" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td><a class="btn btn-success" asp-action="Reply" asp-route-id="@item.Id">Reply</a></td>
+        </tr>
+}
+    </tbody>
+</table>

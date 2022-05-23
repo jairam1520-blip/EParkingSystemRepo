@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ParkingSystem.Models.Booking>
+
+<div class="row pt-4">
+    <div class="col-6">
+        <h2 class="text-heading">All Bookings</h2>
+    </div>
+
+</div>
+
+<table  class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.slot)
+            </th>
+            <th>Changes</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td width="30%">
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td width="20%">
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td width="20%">
+                @Html.DisplayFor(modelItem => item.StartDateTime)
+            </td>
+            <td width="20%">
+                @Html.DisplayFor(modelItem => item.EndDateTime)
+            </td>
+            <td width="35%">
+                @Html.DisplayFor(modelItem => item.BillAmount)
+            </td>
+            <td width="25%">
+                @Html.DisplayFor(modelItem => item.slot.SlotNumber)
+            </td>
+            <td width="25%">
+               
+                <a class="btn btn-danger" asp-action="DeleteBooking" asp-route-id="@item.Bid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

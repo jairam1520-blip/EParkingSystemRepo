@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ParkingSystem.Models.Slot>
+
+<div class="row pt-4">
+    <div class="col-6">
+        <h2 class="text-heading">All Slots</h2>
+    </div>
+    <div class="col-6 text-end ">
+
+        <a class="btn btn-primary" asp-action="CreateSlot" asp-controller="Admin">Create New</a>
+    </div>
+</div>
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.SlotNumber)
+            </th>
+
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.SlotType)
+            </th>
+            <th width="25%">Changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SlotNumber)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SlotType)
+                </td>
+                <td>
+                    <a class="btn btn-primary mx-1" asp-action="EditSlot" asp-route-id="@item.Sid">Edit</a>
+
+                    <a class="btn btn-danger mx-1" asp-action="DeleteSlot" asp-route-id="@item.Sid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

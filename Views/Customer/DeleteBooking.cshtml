@@ -1,0 +1,52 @@
+﻿@model ParkingSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "DeleteBooking";
+}
+
+<h1>DeleteBooking</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="row">
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehicleType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartDateTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDateTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndDateTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BillAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BillAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.slot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.slot.SlotNumber)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteBookingPost">
+        <input type="hidden" asp-for="Bid" />
+        <input type="submit" value="Delete Booking" class="btn btn-danger" /> |
+        <a asp-action="ViewAllBooking">Back to List</a>
+    </form>
+</div>
